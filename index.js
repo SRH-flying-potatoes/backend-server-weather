@@ -1,14 +1,20 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const keys = require('./keys')
+const keys = require("./keys");
 
 const app = express();
 
 var cors = require("cors");
+const { fetchCurrWeather } = require("./fetchWeather");
+
 app.use(cors());
 
-mongoose.connect(keys.__MongoTOKEN__) // create Constants.js file having token value
-  .then(() => console.log("connected to DB"))
+mongoose
+  .connect(keys.__MongoTOKEN__) // create Constants.js file having token value
+  .then(() => {
+    console.log("connected to DB");
+    fetchCurrWeather()
+  })
   .then(() => {
     app.listen(5000);
   })
