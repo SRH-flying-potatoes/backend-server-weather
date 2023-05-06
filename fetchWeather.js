@@ -1,18 +1,18 @@
 const axios = require("axios");
 const keys = require("./keys");
 const { __weatherBaseURL__ } = require("./constants");
-const { state } = require("./store");
+const { globalState } = require("./store");
 
-function fetchCurrWeather() {
-  axios
+async function fetchCurrWeather() {
+  await axios
     .get(
       `${__weatherBaseURL__}current.json?key=` +
         keys.__weatherAPIKey__ +
-        "&q=48.8567,2.3508"
+        "&q=Bangalore"
     )
     .then((res) => {
-      state.currentWeather = res.data;
-      console.log(state.currentWeather)
+      globalState.currentWeather = res.data;
+      // console.log(globalState.currentWeather)
     })
     .catch((err) => {
       console.log(err.message);

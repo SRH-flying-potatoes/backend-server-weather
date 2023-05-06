@@ -1,5 +1,5 @@
-let state = {
+let globalState = {
   currentWeather: [],
 };
 
-exports.state = state;
+exports.globalState = globalState;
