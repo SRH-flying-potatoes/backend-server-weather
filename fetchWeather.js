@@ -3,12 +3,12 @@ const keys = require("./keys");
 const { __weatherBaseURL__ } = require("./constants");
 const { globalState } = require("./store");
 
-async function fetchCurrWeather() {
+async function fetchCurrWeather({ lat, long }) {
   await axios
     .get(
       `${__weatherBaseURL__}current.json?key=` +
         keys.__weatherAPIKey__ +
-        "&q=Bangalore"
+        `&q=${lat},${long}`
     )
     .then((res) => {
       globalState.currentWeather = res.data;
