@@ -1,7 +1,7 @@
 const axios = require("axios");
-const keys = require("./keys");
-const { __weatherBaseURL__ } = require("./constants");
-const { globalState } = require("./store");
+const keys = require("../keys");
+const { __weatherBaseURL__ } = require("../constants");
+const { globalState } = require("../store");
 
 async function fetchCurrWeather({ lat, long }) {
   await axios
